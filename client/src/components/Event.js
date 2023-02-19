@@ -56,9 +56,8 @@ const Event = () => {
       <div className="big-card">
         <div className="top-nav">
           <span className="title"> Details: </span>
-          <span className="back" onClick={() => navigate("/search")}>
-            {" "}
-            &#x3c; Back{" "}
+          <span className="back" onClick={() => navigate("/")}>
+            &#x3c; Back
           </span>
         </div>
 

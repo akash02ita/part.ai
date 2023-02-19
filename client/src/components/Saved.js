@@ -1,9 +1,9 @@
-import JSONdata from '../data/data.json'
-import Card from './Card';
+import JSONdata from "../data/data.json";
+import Card from "./Card";
 import SearchBar from "./SearchBar";
 import logo from "../images/UofCLogo.png";
 
-const Search = () => {
+const Saved = () => {
   const data = JSONdata;
   const renderData = () => {
     const cards = data.data.map((values, id) => {
@@ -29,4 +29,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default Saved;

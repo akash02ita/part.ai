@@ -4,7 +4,9 @@ import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import Create from './components/Create';
 import Search from './components/Search';
 import Event from './components/Event';
-import {SharedLayout} from "./components"
+import Contacts from "./components/Contacts";
+import Saved from "./components/Saved";
+import { SharedLayout } from "./components";
 
 function App() {
   const navigate = useNavigate();
@@ -15,7 +17,8 @@ function App() {
         <Route path="/" element={<SharedLayout />}>
           <Route index path="/" element={<Search />} />
           <Route path="/create" element={<Create />} />
-          <Route path="/search" element={<Search />} />
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="/saved" element={<Saved />} />
           <Route path="/search/:id" element={<Event />} />
         </Route>
       </Routes>

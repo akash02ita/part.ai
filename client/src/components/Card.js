@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { FaEllipsisV } from "react-icons/fa";
 
 const Card = (props) => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const Card = (props) => {
 
   const calcCountColor = (count) => {
     if (count < 20) {
-      return [0, 0, 255];
+      return [255, 255, 255];
     } else if (count < 50) {
       return [255, 165, 0];
     } else {
@@ -40,14 +41,20 @@ const Card = (props) => {
         navigate("/search/" + id);
       }}
     >
-      <h1 className="card-name text-shadow">{name}</h1>
+      <div className="row space-between">
+        <h1 className="card-name text-shadow">{name}</h1>
+        <FaEllipsisV />
+      </div>
+
       <div className="card-details">
         <h2 className="m-0 text-shadow">
           {date}, {start}-{end}
         </h2>
         <h2
           className="m-0 text-shadow"
-          style={{ color: `rgb(${countColor[0]}, 40, ${countColor[2]})` }}
+          style={{
+            color: `rgb(${countColor[0]}, ${countColor[1]}, ${countColor[2]})`,
+          }}
         >
           {attending.length > 50 && <span className="emoji">🔥</span>}
           {attending.length}
