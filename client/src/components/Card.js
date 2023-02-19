@@ -3,18 +3,25 @@ import React from 'react'
 
 const Card = (props) => {
   const name = props.name;
-  const { theme, description, bannerURL, address, attending, start, end } = props.values;
+  const {
+    theme,
+    description,
+    bannerURL,
+    address,
+    date,
+    attending,
+    start,
+    end,
+  } = props.values;
   return (
     <div className="card" style={{ backgroundImage: `url(${bannerURL})` }}>
-      <h1>{name}</h1>
-
-      {/* <img src={bannerURL} /> */}
-
-      <div>
-        <div>Starts {start} </div>
-        <div>Ends {start} </div>
+      <h1 className="card-name">{name}</h1>
+      <div className="card-details">
+        <h1 className="m-0">
+          {date}, {start}-{end}
+        </h1>
+        <h2 className="m-0">{attending.length}</h2>
       </div>
-      <div>{attending.length}</div>
     </div>
   );
 }

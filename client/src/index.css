@@ -18,16 +18,17 @@ code {
 
 .title {
   text-decoration: underline;
-  justify-items: left;
-  justify-content: left;
-  justify-self: left;
+  text-align: left;
+
 }
 
 .card {
+  text-align: left;
   padding: 0.5em;
-  border-radius: 1.5em;
+  border-radius: 1em;
   color: white;
   display: flex;
+  flex-direction: column;
   height: 150px;
   margin-top: 0.5em;
   margin-bottom: 1em;
@@ -35,6 +36,17 @@ code {
   box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
 
+.card-name {
+  margin: 0;
+}
+
+.card-details{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: center;
+  padding-top: 3rem;
+}
 .navbar {
   width: 100%;
 	background-color: #d7d7d7;
@@ -42,6 +54,7 @@ code {
   bottom: 0;
   display: flex;
   justify-content: space-evenly;
+  z-index: 5px;
 }
 
 .navbar-item{
@@ -50,20 +63,40 @@ code {
   align-items: center;
 }
 
+.search-bar-group {
+  position: sticky;
+}
+
 .search-bar {
-  position: absolute;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  outline:none;
-  border:none;
-  background: #fff;
-  width: 50px;
-  height:50px;
+  display: block;
+  width: 100%;
+  height: calc(2.25rem + 2px);
+  padding: .375rem .75rem;
+  padding-left: 2.375rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
   border-radius: 25px;
-  opacity: 0;
-  z-index:5;
-  transition: all 0.2;
-  font-size: 1em;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.search-icon {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+  margin-top: 0.5em;
+  margin-left: 0.5em;
+  font-size: 1.5em;
+}
+
+.margin-0 {
+  margin: 0;
 }
