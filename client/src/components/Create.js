@@ -69,30 +69,27 @@ const Create = () => {
             onChange={(e) => setAddress(e.target.value)}
           />
         </label>
+
+        <label>
+          <input
+            className="create-input width-100 padding-right"
+            type="date"
+            onChange={(e) => setDate(e.target.value)}
+          />
+        </label>
+
         <div className="row width-100">
-          <label>
-            <input
-              className="create-input width-100 padding-right"
-              type="date"
-              onChange={(e) => setDate(e.target.value)}
-            />
-          </label>
-        </div>
-        <div className="row width-100">
-          <label>
-            <input
-              className="create-input width-100 padding-right"
-              type="time"
-              onChange={(e) => setStart(e.target.value)}
-            />{" "}
-          </label>
-          <label>
-            <input
-              className="create-input width-100 padding-right"
-              type="time"
-              onChange={(e) => setEnd(e.target.value)}
-            />{" "}
-          </label>
+          <input
+            className="create-input width-100 padding-right"
+            type="time"
+            onChange={(e) => setStart(e.target.value)}
+          />
+          <span className="dash">-</span>
+          <input
+            className="create-input width-100 padding-right"
+            type="time"
+            onChange={(e) => setEnd(e.target.value)}
+          />{" "}
         </div>
 
         <label>

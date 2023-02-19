@@ -8,25 +8,25 @@ const links = [
   {
     id: 1,
     icon: <FaSearch />,
-    name: "search",
+    name: "Search",
     path: "/",
   },
   {
     id: 2,
     icon: <FaPlus />,
-    name: "create",
+    name: "Create",
     path: "/create",
   },
   {
     id: 2,
     icon: <RiContactsLine />,
-    name: "contacts",
+    name: "Contacts",
     path: "/contacts",
   },
   {
     id: 3,
     icon: <AiOutlineStar />,
-    name: "saved",
+    name: "Saved",
     path: "/saved",
   },
 ];
