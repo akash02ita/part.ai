@@ -1,12 +1,8 @@
 import JSONdata from '../data/data.json'
-import Geocode from "react-geocode";
 import { useParams } from 'react-router-dom';
 import Card from './Card';
 
 const apiKey = process.env.REACT_APP_YOUR_GMAPS_KEY;
-// set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
-Geocode.setApiKey(apiKey);
-Geocode.enableDebug();
 
 const Event = () => {
     const data = JSONdata;
