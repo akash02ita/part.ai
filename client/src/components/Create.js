@@ -6,6 +6,7 @@ const Create = () => {
   const apiKey = process.env.REACT_APP_YOUR_GMAPS_KEY;
   const navigate = useNavigate();
   const [name, setName] = useState(null);
+  const [date, setDate] = useState(null);
   const [start, setStart] = useState(null);
   const [end, setEnd] = useState(null);
   const [url, setUrl] = useState(null);
@@ -14,7 +15,7 @@ const Create = () => {
 
   const handleSubmit = () => {
     console.log("params are ", name, start, end, url, address, description);
-    if (!name || !start || !end || !url || !address || !description) {
+    if (!name || !date || !start || !end || !url || !address || !description) {
       alert("Ensure all fields are filled!");
       return;
     }
@@ -73,8 +74,17 @@ const Create = () => {
             <input
               className="create-input width-100 padding-right"
               type="date"
-              onChange={(e) => setStart(e.target.value)}
+              onChange={(e) => setDate(e.target.value)}
             />
+          </label>
+        </div>
+        <div className="row width-100">
+          <label>
+            <input
+              className="create-input width-100 padding-right"
+              type="time"
+              onChange={(e) => setStart(e.target.value)}
+            />{" "}
           </label>
           <label>
             <input
