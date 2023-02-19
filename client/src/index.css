@@ -348,3 +348,24 @@ code {
   margin-right: 1em;
 }
 
+.button-group{
+  font-weight: 700;
+  font-family: "Lexend deca";
+}
+
+.b-1{
+  height: 2rem;
+  background-color: white;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border: 1px solid;
+}
+
+.b-2{
+  height: 2rem;
+  color: white;
+  background-color: blue  ;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border: 1px solid;
+}

@@ -32,6 +32,10 @@ const Create = () => {
             &#x3c; Back
           </span>
         </div>
+        <div className="row button-group">
+          <button className="width-100 b-1">Public</button>
+          <button className="width-100 b-2">Private</button>
+        </div>
         <div
           className="card create-card"
           style={{
@@ -102,7 +106,7 @@ const Create = () => {
         </label>
 
         <div className="button-container">
-          <button className="join-button" onClick={() => handleSubmit()}>
+          <button className="join-button" onClick={() => navigate("/saved")}>
             Done
           </button>
         </div>
