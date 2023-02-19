@@ -1,7 +1,7 @@
 import JSONdata from '../data/data.json'
 import Geocode from "react-geocode";
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import Card from './Card';
 
 const apiKey = process.env.REACT_APP_YOUR_GMAPS_KEY;
 // set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
@@ -13,7 +13,8 @@ const Event = () => {
     // extract event-name from urs parama
     const { name } = useParams();
     // fetch all values
-    const { theme, description, bannerURL, address, attending, start, end } = data[name];
+    const values = data[name];
+    const { theme, description, bannerURL, address, attending, start, end } = values;
 
     const renderMap = () => {
         // return map at given coord
@@ -28,10 +29,24 @@ const Event = () => {
         </iframe>
     }
 
+    const renderAttendance = () => {
+        const renderedAttending = attending.map(((name, id) => <div key={id}>{name}</div>));
+        return <div> {renderedAttending} </div>
+    }
+
     return (
         <>
-            <div> Event component </div>
+            <h1> Details </h1>
+            {/* <div className='card' style={{backgroundImage: `url(${bannerURL})`}}></div> */}
+            <Card name={name} values={values} />
+            <div>Description: {description}</div>
+            <div>Theme: {theme}</div>
+            <div className='event-address'>{address}</div>
             {renderMap()}
+            <h3>Who's attending</h3>
+            {renderAttendance()}
+
+            <button>JOIN</button>
         </>
     );
 }
