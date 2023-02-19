@@ -170,13 +170,13 @@ code {
 
 .circle {
   background-color: red;
-  border: 3px solid #FFF;
+  border: 2px solid #FFF;
   border-radius: 18px;
   color: white;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   box-shadow: 0 0 0 1.5px #888;
-  height: 30px;
-  width: 30px;
+  height: 2rem;
+  width: 2rem;
   text-align: center;
   font-size: 1.5rem;
   text-transform: capitalize;
@@ -344,3 +344,28 @@ code {
   text-align: center;
 }
 
+.pt-logo{
+  margin-right: 1em;
+}
+
+.button-group{
+  font-weight: 700;
+  font-family: "Lexend deca";
+}
+
+.b-1{
+  height: 2rem;
+  background-color: white;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border: 1px solid;
+}
+
+.b-2{
+  height: 2rem;
+  color: white;
+  background-color: blue  ;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border: 1px solid;
+}
