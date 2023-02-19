@@ -314,3 +314,23 @@ code {
   width: 1.5rem;
 }
 
+.bubbles {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.bubbles::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
+
+
+.bubble {
+  background-color: white;
+  border-radius: 25px;
+  overflow:visible;
+  font-weight: 700;
+  padding: 0.25em;
+  margin-right: 0.5em;
+}
+

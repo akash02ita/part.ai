@@ -3,27 +3,23 @@ import React from "react";
 const bubbles = [
   {
     id: 1,
-    icon: <FaSearch />,
-    name: "search",
-    path: "/",
+    theme: "Dance & Music",
   },
   {
     id: 2,
-    icon: <FaPlus />,
-    name: "create",
-    path: "/create",
+    theme: "Recreational",
   },
   {
     id: 2,
-    icon: <RiContactsLine />,
-    name: "contacts",
-    path: "/contacts",
+    theme: "House Party",
   },
   {
     id: 3,
-    icon: <AiOutlineStar />,
-    name: "saved",
-    path: "/saved",
+    theme: "Dorm",
+  },
+  {
+    id: 4,
+    theme: "Fraternity",
   },
 ];
 
