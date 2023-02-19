@@ -43,7 +43,7 @@ const Card = (props) => {
     >
       <div className="row space-between">
         <h1 className="card-name text-shadow">{name}</h1>
-        <FaEllipsisV />
+        <FaEllipsisV className="elipsis" />
       </div>
 
       <div className="card-details">

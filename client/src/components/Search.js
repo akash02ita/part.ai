@@ -19,6 +19,7 @@ const Search = () => {
     <div className="main">
       <SearchBar />
       <h1 className="title">Home</h1>
+      <div className="row"></div>
       <div className="row">
         <img className="logo" src={logo} alt="Logo" />
         <h2 className="title margin-0">University of Calgary</h2>

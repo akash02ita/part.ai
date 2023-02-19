@@ -18,13 +18,16 @@ const Saved = () => {
   return (
     <div className="main">
       <SearchBar />
-      <h1 className="title">Home</h1>
+      <h1 className="title">Saved</h1>
       <div className="row">
         <img className="logo" src={logo} alt="Logo" />
         <h2 className="title margin-0">University of Calgary</h2>
       </div>
+      <h3 className="title margin-0 center">Up & Coming</h3>
+      <Card key={0 + "data"} values={data.data[1]} />
 
-      {renderData()}
+      <h3 className="title margin-0 center">Feb 24, 2023</h3>
+      <Card key={0 + "data"} values={data.data[0]} />
     </div>
   );
 };

@@ -304,3 +304,13 @@ code {
   padding-right: 1.45rem;
 }
 
+.center {
+  padding-top: 1rem;
+  text-align: center;
+}
+
+.elipsis {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
