@@ -5,9 +5,10 @@ import SearchBar from "./SearchBar";
 const Search = () => {
   const data = JSONdata;
   const renderData = () => {
-    const cards = Object.entries(data).map(([name, values], id) => {
+    const cards = data.data.map((values, id) => {
       // const {theme, description, bannerURL, address, attending, start, end} = values
-      return <Card key={id} name={name} values={values} />;
+      console.log(values);
+      return <Card key={id + "data"} values={values} />;
     });
 
     return cards;
@@ -17,7 +18,7 @@ const Search = () => {
     <div className="main">
       <SearchBar />
       <h1 className="title">Home</h1>
-
+      <h2 className="title">Up And Coming</h2>
       {renderData()}
     </div>
   );

@@ -7,10 +7,14 @@ const Navbar = () => {
     <div className='navbar'>{links.map((link)=> {
         const {id, name, icon, path} = link
         return (
-          <NavLink key={id} to={path}>
+          <NavLink
+            className="navbar-link"
+            key={id}
+            to={path}
+            style={{ textDecoration: "none" }}
+          >
             <div className="navbar-item">
               <div className="navbar-icon">{link.icon}</div>
-
               {link.name}
             </div>
           </NavLink>

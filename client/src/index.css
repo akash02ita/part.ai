@@ -1,10 +1,10 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: "lexend deca", "arial",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #ced4da;
 }
 
 code {
@@ -14,6 +14,16 @@ code {
 
 .main {
   margin: 1rem;
+  height: 100vh;
+  text-align: left;
+}
+
+.big-card{
+  background-color: white;
+  padding: 1em;
+  border-radius: 1rem;
+  min-height: 100vh;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
 
 .title {
@@ -50,26 +60,44 @@ code {
 .navbar {
   width: 100%;
 	background-color: #d7d7d7;
-	position: sticky;
-  bottom: 0;
+  position: fixed;
+  bottom: 0px;
   display: flex;
   justify-content: space-evenly;
   z-index: 5px;
+  padding-top: 5px;
+  text-decoration: none;
+  background-image: linear-gradient(rgb(206, 206, 206), rgb(171, 171, 171));
+
+}
+
+.navbar-link{
+  color: black;
+}
+
+.active{
+  color: rgb(46, 65, 234);
 }
 
 .navbar-item{
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-weight: 700;
+}
+
+.navbar-item{
+  font-size: 1.2rem;
 }
 
 .search-bar-group {
   position: sticky;
+  top: 5px;
 }
 
 .search-bar {
   display: block;
-  width: 100%;
+  width: 85%;
   height: calc(2.25rem + 2px);
   padding: .375rem .75rem;
   padding-left: 2.375rem;
@@ -91,7 +119,7 @@ code {
   line-height: 2.375rem;
   text-align: center;
   pointer-events: none;
-  color: #aaa;
+  
   margin-top: 0.5em;
   margin-left: 0.5em;
   font-size: 1.5em;
@@ -100,3 +128,80 @@ code {
 .margin-0 {
   margin: 0;
 }
+
+.circle {
+  background-color: #F80;
+  border: 3px solid #FFF;
+  border-radius: 18px;
+  color: white;
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 0 0 0 1.5px #888;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+
+.attending {
+  display: flex;
+  flex-direction: row;
+}
+.attending-name {
+  text-align: center;
+  width: 30px;
+  font-size: 0.6rem;
+}
+
+.plus {
+  background-color: #818b95;
+  font-size: 0.9rem;
+}
+
+.plus > .initial {
+  padding-top: 0.3rem;
+}
+
+.map {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.join-button {
+  color: white;
+  background-color: red;
+  padding: 0.5rem;
+  border-radius: 2rem;
+  width: 10rem;
+  border: none;
+  font-weight: 700;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.pin {
+  color: red
+}
+
+.top-nav {
+  font-size: 2.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.top-nav > .back {
+  color: darkturquoise;
+  font-size: 1.5rem;
+}
+
+.button-container {
+  margin-top: 1rem;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.text-shadow {
+  text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.6);
+}
+

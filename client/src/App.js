@@ -16,7 +16,7 @@ function App() {
           <Route index path="/" element={<Search />} />
           <Route path="/create" element={<Create />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/search/:name" element={<Event />} />
+          <Route path="/search/:id" element={<Event />} />
         </Route>
       </Routes>
     </div>

@@ -1,50 +1,97 @@
 import JSONdata from '../data/data.json'
 import { useParams } from 'react-router-dom';
-import Card from './Card';
+import { RiMapPin5Fill } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
+import Card from "./Card";
 
 const apiKey = process.env.REACT_APP_YOUR_GMAPS_KEY;
 
 const Event = () => {
-    const data = JSONdata;
-    // extract event-name from urs parama
-    const { name } = useParams();
-    // fetch all values
-    const values = data[name];
-    const { theme, description, bannerURL, address, attending, start, end } = values;
+  const data = JSONdata;
+  // extract event-name from urs parama
+  const { id } = useParams();
+  // fetch all values
+  const values = data.data[id];
+  const {
+    name,
+    theme,
+    description,
+    bannerURL,
+    address,
+    attending,
+    start,
+    end,
+  } = values;
 
-    const renderMap = () => {
-        // return map at given coord
-        return <iframe
-            width="300" // manual size here can be modified
-            height="225" // manual size here can be modifed
-            style={{border:0}}
-            loading="lazy"
-            allowFullScreen
-            referrerPolicy="no-referrer-when-downgrade"
-            src={`https://www.google.com/maps/embed/v1/${"place"}?key=${apiKey}&q=${address}`}>
-        </iframe>
-    }
+  const navigate = useNavigate();
 
-    const renderAttendance = () => {
-        const renderedAttending = attending.map(((name, id) => <div key={id}>{name}</div>));
-        return <div> {renderedAttending} </div>
-    }
-
+  const renderMap = () => {
+    // return map at given coord
     return (
-        <>
-            <h1> Details </h1>
-            {/* <div className='card' style={{backgroundImage: `url(${bannerURL})`}}></div> */}
-            <Card name={name} values={values} />
-            <div>Description: {description}</div>
-            <div>Theme: {theme}</div>
-            <div className='event-address'>{address}</div>
-            {renderMap()}
-            <h3>Who's attending</h3>
-            {renderAttendance()}
-
-            <button>JOIN</button>
-        </>
+      <iframe
+        width="100%" // manual size here can be modified
+        style={{ border: 0 }}
+        loading="lazy"
+        allowFullScreen
+        referrerPolicy="no-referrer-when-downgrade"
+        src={`https://www.google.com/maps/embed/v1/${"place"}?key=${apiKey}&q=${address}&zoom=18`}
+      ></iframe>
     );
-}
+  };
+
+  const renderAttendance = () => {
+    const renderedAttending = attending.slice(0, 3).map((name, id) => (
+      <div className="attending-group">
+        <div className="circle" key={id}>
+          <div className="initial">{name[0]}</div>
+        </div>
+        <div className="attending-name">{name}</div>
+      </div>
+    ));
+    return renderedAttending;
+  };
+
+  return (
+    <div className="main">
+      <div className="big-card">
+        <div className="top-nav">
+          <span className="title"> Details: </span>
+          <span className="back" onClick={() => navigate("/search")}>
+            {" "}
+            &#x3c; Back{" "}
+          </span>
+        </div>
+
+        <div
+          className="card"
+          style={{ backgroundImage: `url(${bannerURL})`, height: "70px" }}
+        >
+          <h1>{name}</h1>
+        </div>
+        <p>Theme: {theme}</p>
+        <p>Description: {description}</p>
+
+        <p className="event-address">
+          <span className="pin">
+            <RiMapPin5Fill />
+          </span>
+          {address}
+        </p>
+        <p className="map">{renderMap()}</p>
+
+        <h3>Who's attending:</h3>
+        <div className="attending">
+          {renderAttendance()}
+          <div className="circle plus" key={id}>
+            <div className="initial">+{+attending.length - 3}</div>
+          </div>
+        </div>
+        <div className="button-container">
+          <button className="join-button">JOIN</button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Event;
