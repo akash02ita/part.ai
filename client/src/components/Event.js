@@ -15,34 +15,24 @@ const Event = () => {
     // fetch all values
     const { theme, description, bannerURL, address, attending, start, end } = data[name];
 
-    const [coord, setCoord] = useState(null);
-    useEffect(() => {
-        if (!address) {console.log("Address is null skipping it"); return;}
-        Geocode.fromAddress(address).then(
-            (response) => {
-                const { lat, lng } = response.results[0].geometry.location;
-                console.log(`Found coordinates for address ${address}:`, lat, lng);
-                setCoord([lat, lng]);
-            },
-            (error) => {
-                console.error(error);
-                console.log(`NO coordinates for address ${address}:`);
-            }
-        )
-    }, [address])
-
-
     const renderMap = () => {
-        if (!coord) {
-            console.log("Coordinates not found so no map will be rendered");
-            return <></>
-        }
-
         // return map at given coord
+        return <iframe
+            width="300" // manual size here can be modified
+            height="225" // manual size here can be modifed
+            style={{border:0}}
+            loading="lazy"
+            allowFullScreen
+            referrerPolicy="no-referrer-when-downgrade"
+            src={`https://www.google.com/maps/embed/v1/${"place"}?key=${apiKey}&q=${address}`}>
+        </iframe>
     }
 
     return (
-        <div> Event component </div>
+        <>
+            <div> Event component </div>
+            {renderMap()}
+        </>
     );
 }
 
