@@ -12,13 +12,12 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<SharedLayout/>}>
-          <Route path="/create" element= { <Create/> }/>
-          <Route path="/search" element= { <Search/> }/>
-          <Route path="/search/:name" element= { <Event /> }/>
-          <Route index path="*" element= { <Navigate to="/search" /> }/>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index path="/" element={<Search />} />
+          <Route path="/create" element={<Create />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/search/:name" element={<Event />} />
         </Route>
-        
       </Routes>
     </div>
   );

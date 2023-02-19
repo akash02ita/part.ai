@@ -4,20 +4,20 @@ import Card from './Card';
 
 const Search = () => {
     const data = JSONdata;
-    
     const renderData = () => {
-        const cards = Object.entries(data).map( ([name, values], id) => {
-            // const {theme, description, bannerURL, address, attending, start, end} = values
-            return <Card key={id} name={name} values={values}/>
-        });
+      const cards = Object.entries(data).map(([name, values], id) => {
+        // const {theme, description, bannerURL, address, attending, start, end} = values
+        return <Card key={id} name={name} values={values} />;
+      });
 
-        return cards;
-    }
+      return cards;
+    };
 
     return (
-        <>
-            {renderData()}
-        </>
+      <div className="main">
+        <h1 className="title">Home</h1>
+        {renderData()}
+      </div>
     );
 }
 
