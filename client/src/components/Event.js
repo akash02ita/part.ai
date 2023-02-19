@@ -1,6 +1,6 @@
 import JSONdata from '../data/data.json'
 import { useParams } from 'react-router-dom';
-import { RiMapPin5Fill } from "react-icons/ri";
+import { FaMapMarkerAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Card from "./Card";
 
@@ -42,7 +42,7 @@ const Event = () => {
   const renderAttendance = () => {
     const renderedAttending = attending.slice(0, 3).map((name, id) => (
       <div className="attending-group">
-        <div className="circle" key={id}>
+        <div className="circle" key={"cir" + id}>
           <div className="initial">{name[0]}</div>
         </div>
         <div className="attending-name">{name}</div>
@@ -63,7 +63,7 @@ const Event = () => {
 
         <div
           className="card"
-          style={{ backgroundImage: `url(${bannerURL})`, height: "70px" }}
+          style={{ backgroundImage: `url(${bannerURL})`, height: "90px" }}
         >
           <h1>{name}</h1>
         </div>
@@ -72,7 +72,7 @@ const Event = () => {
 
         <p className="event-address">
           <span className="pin">
-            <RiMapPin5Fill />
+            <FaMapMarkerAlt />
           </span>
           {address}
         </p>
@@ -86,7 +86,7 @@ const Event = () => {
           </div>
         </div>
         <div className="button-container">
-          <button className="join-button">JOIN</button>
+          <button className="join-button" onClick={()=>navigate("/saved")}>JOIN</button>
         </div>
       </div>
     </div>

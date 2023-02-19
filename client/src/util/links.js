@@ -18,13 +18,13 @@ const links = [
     path: "/create",
   },
   {
-    id: 2,
+    id: 3,
     icon: <RiContactsLine />,
     name: "Contacts",
     path: "/contacts",
   },
   {
-    id: 3,
+    id: 4,
     icon: <AiOutlineStar />,
     name: "Saved",
     path: "/saved",

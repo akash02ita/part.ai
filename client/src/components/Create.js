@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { RiMapPin5Fill } from "react-icons/ri";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 const Create = () => {
   const apiKey = process.env.REACT_APP_YOUR_GMAPS_KEY;
@@ -61,7 +61,7 @@ const Create = () => {
         </div>
 
         <label>
-          <RiMapPin5Fill className="pin-icon pin grey" />
+          <FaMapMarkerAlt className="pin-icon pin grey" />
           <input
             className="create-input width-100 input-icon"
             placeholder="Add a Location"

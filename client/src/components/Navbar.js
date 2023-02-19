@@ -9,7 +9,7 @@ const Navbar = () => {
         return (
           <NavLink
             className="navbar-link"
-            key={id}
+            key={"nav"+id}
             to={path}
             style={{ textDecoration: "none" }}
           >

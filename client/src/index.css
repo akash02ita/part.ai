@@ -170,13 +170,13 @@ code {
 
 .circle {
   background-color: red;
-  border: 3px solid #FFF;
+  border: 2px solid #FFF;
   border-radius: 18px;
   color: white;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   box-shadow: 0 0 0 1.5px #888;
-  height: 30px;
-  width: 30px;
+  height: 2rem;
+  width: 2rem;
   text-align: center;
   font-size: 1.5rem;
   text-transform: capitalize;
@@ -342,5 +342,9 @@ code {
   margin-right: 1rem;
   font-weight: 600;
   text-align: center;
+}
+
+.pt-logo{
+  margin-right: 1em;
 }
 
