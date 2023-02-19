@@ -15,4 +15,12 @@ code {
 .card {
   border-radius: 2em;
   border: 1px solid black;
+
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  
 }
