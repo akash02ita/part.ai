@@ -1,12 +1,37 @@
 import mongoose from "mongoose";
+import _ from "lodash";
 
-const dbConnector = () => {
-  //mongoose connection
-  mongoose.Promise = global.Promise;
-  return mongoose.connect("mongodb://localhost/partai", {
-    useNewUrlParser: true,
-  });
-}
+//mongoose connection
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost/partyai", {
+  useNewUrlParser: true,
+});
 
+const partySchema = new mongoose.Schema({
+  name: {
+    type: String,
+  },
+  description: {
+    type: String,
+  },
+  startTime: {
+    type: Number,
+  },
+  endTime: {
+    type: Number,
+  },
+  address: {
+    type: String,
+  },
+  type: {
+    type: String,
+  },
+  isPublic: {
+    type: Boolean,
+    default: true,
+  },
+});
 
-export default dbConnector;
+const Party = mongoose.model("parties", partySchema);
+
+export { Party };

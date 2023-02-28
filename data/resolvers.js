@@ -1,14 +1,14 @@
 import { createRequire } from "module";
 import _ from "lodash";
-import { Party } from "./Party.js";
-// const require = createRequire(import.meta.url);
+import { Party } from "./dbConnector.js";
+const require = createRequire(import.meta.url);
 
 const resolvers = {
   getParty: ({ id }) => {
     return new Promise((resolve) => {
-      Party.findById({ _id: id }, (err, product) => {
+      Party.findById({ _id: id }, (err, party) => {
         if (err) _.reject(err);
-        else resolve(product);
+        else resolve(party);
       });
     });
   },
@@ -21,10 +21,11 @@ const resolvers = {
     const newParty = new Party({
       name: input.name,
       description: input.description,
-      bannerUrl: input.bannerUrl,
       startTime: input.startTime,
       endTime: input.endTime,
-      attending: input.attending
+      address: input.address,
+      type: input.type,
+      isPublic: input.isPublic,
     });
 
     newParty.id = newParty._id;
@@ -43,9 +44,9 @@ const resolvers = {
         { _id: input.id },
         input,
         { new: true },
-        (err, party) => {
+        (err, widget) => {
           if (err) _.reject(err);
-          else resolve(party);
+          else resolve(widget);
         }
       );
     });

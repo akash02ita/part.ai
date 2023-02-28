@@ -1,29 +1,28 @@
 import express from "express";
 import { graphqlHTTP } from "express-graphql";
+import schema from "./data/schema.js";
+import resolvers from "./data/resolvers.js";
 
-import dotenv from 'dotenv';
-dotenv.config();
-
-import schema  from "./data/schema.js"
-import resolvers from "./data/resolvers.js"
-
-
-const root = resolvers;
 const app = express();
 
-import dbConnector from "./data/dbConnector.js";
-// use static public folder: client -> npm run build
-// import path from 'path'
-// import { dirname } from "path";
-// import { fileURLToPath } from "url";
-
-// const __dirname = dirname(fileURLToPath(import.meta.url));
-// app.use(express.static(path.join(__dirname, "./client", "build")));
-
-
-app.get("/", (req, res)=> {
-    res.send("You have sucessfully connected to the api.")
+app.get("/", (req, res) => {
+  res.send("Graphql is amazing");
 });
+
+class Product {
+  constructor(id, { name, description, price, soldout, stores }) {
+    this.id = id;
+    this.name = name;
+    this.description = description;
+    this.price = price;
+    this.soldout = soldout;
+    this.stores = stores;
+  }
+}
+
+const productDatabase = {};
+
+const root = resolvers;
 
 app.use(
   "/graphql",
@@ -34,23 +33,6 @@ app.use(
   })
 );
 
-// // allow routes of react
-// app.use((req, res, next) => {
-//     res.sendFile(path.join(__dirname, "../client", "build", "index.html"));
-// });
-
-const port = process.env.PORT || 5000;
-
-app.listen(port, () => {
-    console.log(`Part.ai listening on port http://localhost:${port}`)
-});
-
-const start = async () => {
-  try {
-    await dbConnector();
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-start()
+app.listen(8080, () =>
+  console.log("Running server on port localhost:8080/graphql")
+);

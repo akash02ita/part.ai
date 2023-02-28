@@ -3,20 +3,43 @@ import Card from './Card';
 import SearchBar from "./SearchBar";
 import Bubbles from "./Bubbles";
 import logo from "../images/UofCLogo.png";
-import { useState } from 'react';
+import { useState, useEffect } from "react";
 
 const Search = () => {
+  const [qata, setData] = useState([]);
+  useEffect(() => {
+    const partyQuery = {
+      query: `
+      {
+        getAllParties{
+          id
+          name
+        }
+      }
+      `,
+    };
+    fetch("graphql", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(partyQuery),
+    })
+      .then((res) => res.json())
+      .then((data) => {});
+  });
+
   const data = JSONdata;
   const [themeFilter, setThemeFilter] = useState(null);
   console.log("Themefilter is ", themeFilter);
 
   const renderData = () => {
-    const filteredCards = themeFilter ? data.data.filter(values => values.theme == themeFilter) : data.data;
+    const filteredCards = themeFilter
+      ? data.data.filter((values) => values.theme == themeFilter)
+      : data.data;
     console.log("Filtered events is ", filteredCards);
     const cards = filteredCards.map((values, id) => {
       // const {theme, description, bannerURL, address, attending, start, end} = values
       // console.log(values);
-      return <Card key={id + "data"} values={values}/>;
+      return <Card key={id + "data"} values={values} />;
     });
 
     return cards;
@@ -26,7 +49,7 @@ const Search = () => {
     <div className="main">
       <SearchBar />
       <h1 className="title">Home</h1>
-      <Bubbles updateChoice={(theme) => setThemeFilter(theme)}/>
+      <Bubbles updateChoice={(theme) => setThemeFilter(theme)} />
       <div className="row">
         <img className="logo" src={logo} alt="Logo" />
         <h2 className="title margin-0">University of Calgary</h2>
