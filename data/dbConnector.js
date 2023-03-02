@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import _ from "lodash";
+import { defaultBanner } from "./defaults.js";
 
 //mongoose connection
 mongoose.Promise = global.Promise;
@@ -29,6 +30,14 @@ const partySchema = new mongoose.Schema({
   isPublic: {
     type: Boolean,
     default: true,
+  },
+  bannerUrl: {
+    type: String,
+    default: defaultBanner,
+  },
+  attending: {
+    type: Array,
+    default: [],
   },
 });
 

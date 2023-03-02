@@ -1,6 +1,6 @@
-import { buildSchema } from "graphql";
+const schema = `
+  scalar Timestamp
 
-const schema = buildSchema(`
   enum Major{
     COMPSCI
     MATH
@@ -8,24 +8,26 @@ const schema = buildSchema(`
     BUSINESS
   }
 
-  type User {
-    id: ID
-    email: String
-    name: String
-    password: String
-    description: String
-    profilePicture: String
-    major: Major
-  } 
+
+  enum Type{
+    DANCEANDMUSIC
+    RECREATIONAL
+    HOUSEPARTY
+    DORM
+    FRATERNITY
+  }
 
   type Party {
     id: ID
     name: String
     description: String
     address: String
-    startTime: Int
-    endTime: Int
+    bannerUrl: String
+    startTime: Timestamp
+    endTime: Timestamp
     attending: [ID]
+    type: Type
+    school: [ID]
   }
 
   input PartyInput {
@@ -33,12 +35,15 @@ const schema = buildSchema(`
     name: String
     description: String
     address: String
-    startTime: Int
-    endTime: Int
+    bannerUrl: String
+    startTime: Timestamp
+    endTime: Timestamp
     attending: [ID]
+    type: Type
+    school: [ID!]
   }
 
-   type Query {
+  type Query {
     getParty(id: ID): Party
     getAllParties: [Party]
   }
@@ -48,7 +53,6 @@ const schema = buildSchema(`
     updateParty(input: PartyInput): Party
     deleteParty(id: ID!): String
   }
-`);
+`;
 
 export default schema;
-

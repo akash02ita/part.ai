@@ -3,10 +3,11 @@ import Card from './Card';
 import SearchBar from "./SearchBar";
 import Bubbles from "./Bubbles";
 import logo from "../images/UofCLogo.png";
+import axios from "axios";
 import { useState, useEffect } from "react";
 
 const Search = () => {
-  const [qata, setData] = useState([]);
+  const [data, setData] = useState([]);
   useEffect(() => {
     const partyQuery = {
       query: `
@@ -14,27 +15,35 @@ const Search = () => {
         getAllParties{
           id
           name
+          description
+          address
+          startTime
+          endTime
+          attending
+          type
+          bannerUrl
         }
       }
       `,
     };
-    fetch("graphql", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(partyQuery),
-    })
-      .then((res) => res.json())
-      .then((data) => {});
-  });
 
-  const data = JSONdata;
+    getParties(partyQuery);
+  }, []);
+
+  const getParties = async (partyQuery) => {
+    const response = await axios.post(`graphql`, partyQuery);
+    const { data } = response.data;
+    console.log(data);
+    setData(data.getAllParties);
+  };
+
   const [themeFilter, setThemeFilter] = useState(null);
   console.log("Themefilter is ", themeFilter);
 
   const renderData = () => {
     const filteredCards = themeFilter
-      ? data.data.filter((values) => values.theme == themeFilter)
-      : data.data;
+      ? data.filter((values) => values.theme == themeFilter)
+      : data;
     console.log("Filtered events is ", filteredCards);
     const cards = filteredCards.map((values, id) => {
       // const {theme, description, bannerURL, address, attending, start, end} = values

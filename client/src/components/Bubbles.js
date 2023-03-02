@@ -22,9 +22,26 @@ const Bubbles = (props) => {
         const { theme, selected } = bubble;
         if (selections.includes(theme)) {
           console.log("theme is true", theme);
-          return <span style={{ color: "red" }} onClick={() => handleSelection(theme)} className="bubble">{theme}</span>
-        };
-        return <span onClick={() => handleSelection(theme)} className="bubble">{theme}</span>;
+          return (
+            <span
+              key={`bubble-${theme}`}
+              style={{ color: "red" }}
+              onClick={() => handleSelection(theme)}
+              className="bubble"
+            >
+              {theme}
+            </span>
+          );
+        }
+        return (
+          <span
+            key={`bubble-${theme}`}
+            onClick={() => handleSelection(theme)}
+            className="bubble"
+          >
+            {theme}
+          </span>
+        );
       })}
     </div>
   );

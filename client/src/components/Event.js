@@ -2,26 +2,56 @@ import JSONdata from '../data/data.json'
 import { useParams } from 'react-router-dom';
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import Card from "./Card";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const apiKey = process.env.REACT_APP_YOUR_GMAPS_KEY;
 
 const Event = () => {
-  const data = JSONdata;
   // extract event-name from urs parama
   const { id } = useParams();
+
+  const [data, setData] = useState({});
+
+  const getParty = async (partyQuery) => {
+    const response = await axios.post(`/graphql`, partyQuery);
+    const { data } = response.data;
+    console.log(data);
+    setData(data.getParty);
+  };
+
+  useEffect(() => {
+    const partyQuery = {
+      query: `
+      {
+        getParty(id: "${id}"){
+          id
+          name
+          description
+          address
+          startTime
+          endTime
+          attending
+          type
+          bannerUrl
+        }
+      }
+      `,
+    };
+    getParty(partyQuery);
+  }, []);
+
   // fetch all values
-  const values = data.data[id];
   const {
     name,
     theme,
     description,
-    bannerURL,
+    bannerUrl,
     address,
     attending,
-    start,
-    end,
-  } = values;
+    startTime,
+    endTime,
+  } = data;
 
   const navigate = useNavigate();
 
@@ -40,6 +70,7 @@ const Event = () => {
   };
 
   const renderAttendance = () => {
+    if (attending.length < 3) return <div></div>;
     const renderedAttending = attending.slice(0, 3).map((name, id) => (
       <div className="attending-group">
         <div className="circle" key={"cir" + id}>
@@ -63,7 +94,7 @@ const Event = () => {
 
         <div
           className="card"
-          style={{ backgroundImage: `url(${bannerURL})`, height: "90px" }}
+          style={{ backgroundImage: `url(${bannerUrl})`, height: "90px" }}
         >
           <h1>{name}</h1>
         </div>
@@ -80,13 +111,15 @@ const Event = () => {
 
         <h3>Who's attending:</h3>
         <div className="attending">
-          {renderAttendance()}
+          {/* {renderAttendance()} */}
           <div className="circle plus" key={id}>
-            <div className="initial">+{+attending.length - 3}</div>
+            {/* <div className="initial">+{+attending.length - 3}</div> */}
           </div>
         </div>
         <div className="button-container">
-          <button className="join-button" onClick={()=>navigate("/saved")}>JOIN</button>
+          <button className="join-button" onClick={() => navigate("/saved")}>
+            JOIN
+          </button>
         </div>
       </div>
     </div>

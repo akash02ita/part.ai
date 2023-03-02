@@ -2,6 +2,8 @@ import React from 'react'
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FaEllipsisV } from "react-icons/fa";
+import Moment from "react-moment";
+import moment from "moment";
 
 const Card = (props) => {
   const navigate = useNavigate();
@@ -11,12 +13,12 @@ const Card = (props) => {
     name,
     theme,
     description,
-    bannerURL,
+    bannerUrl,
     address,
     date,
     attending,
-    start,
-    end,
+    startTime,
+    endTime,
   } = props.values;
 
   const calcCountColor = (count) => {
@@ -29,6 +31,14 @@ const Card = (props) => {
     }
   };
 
+  const getTimeRange = () => {
+    return (
+      moment(startTime).local().format("MMM D, h:mm A") +
+      "-" +
+      moment(endTime).local().format("h:mm A")
+    );
+  };
+
   useEffect(() => {
     setCountColor(calcCountColor(attending.length));
   }, [attending]);
@@ -36,7 +46,7 @@ const Card = (props) => {
   return (
     <div
       className="card"
-      style={{ backgroundImage: `url(${bannerURL})` }}
+      style={{ backgroundImage: `url(${bannerUrl})` }}
       onClick={() => {
         navigate("/search/" + id);
       }}
@@ -47,9 +57,7 @@ const Card = (props) => {
       </div>
 
       <div className="card-details">
-        <h2 className="m-0 text-shadow">
-          {date}, {start}-{end}
-        </h2>
+        <h2 className="m-0 text-shadow">{getTimeRange()}</h2>
         <h2
           className="m-0 text-shadow"
           style={{

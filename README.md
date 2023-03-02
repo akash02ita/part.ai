@@ -1,5 +1,9 @@
-# part.ai
+# Part.Ai
 event searching web-app
+
+# Requirments
+MongoDB Community Server [[Link](https://www.mongodb.com/try/download/community)]
+
 
 ## Live demo link
 Allow up to a minute to activate deployed host service link:
